@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+   
+    *{
+        @apply m-0 p-0 box-border outline-none border-none font-sans;
+    }
+    html, body{
+        @apply bg-body
+    }
+    html{
+        @apply scroll-smooth scrollbar-thin scrollbar-track-gray-200 scrollbar-track-rounded-xl scrollbar-thumb-[#cfcfcf] scrollbar-thumb-rounded-xl
+    }
+    .input{
+        @apply rounded-md border-gray-300 px-3 py-2 border-solid border focus:border-current focus:ring-current sm:text-sm
+    }
+    select{
+        @apply rounded-md border-gray-300 px-3 py-2 border-solid border focus:border-current focus:ring-current sm:text-sm
+    }
+    .w-content{
+        width: calc(100%-250px);
+    }
+    .mycontainer{
+        @apply px-[5%] py-[1.5rem]
+    }
+    .head{
+        @apply bg-head;
+    }
+    .head span{
+        @apply mr-1 text-xs
+    }
+    .head .soicons i{
+        @apply text-sm mr-3 cursor-pointer
+    }
+    .navlink ul li{
+        @apply mr-10
+    }
+    .navlink ul li a{
+        @apply transition hover:text-[#e94560] text-[#2B3445]
+    }
+    .search.active{
+        @apply h-28 fixed top-0 z-40 w-full bg-white transition
+    }
+    header ul li{
+        @apply max-lg:w-full max-lg:uppercase
+    }
+};
+

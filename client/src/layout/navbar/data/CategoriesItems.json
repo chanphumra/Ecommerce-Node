@@ -1,0 +1,101 @@
+[
+    {   
+        "icon": "./images/cate1.png",
+        "title": "Men",
+        "children": [
+            {
+                "id": 1,
+                "title": "Collection",
+                "path": "/collection",
+                "page_name": "collection"
+            },
+            {
+                "id": 2,
+                "title": "Sport",
+                "path": "/sport",
+                "page_name": "sport"
+            },
+            {
+                "id": 3,
+                "title": "Art",
+                "path": "/art",
+                "page_name": "art"
+            }
+        ]
+    },
+    {   
+        "id": 2,
+        "icon": "./images/cate1.png",
+        "title": "Women",
+        "children": [
+            {
+                "id": 1,
+                "title": "Shirt",
+                "path": "/shirt",
+                "page_name": "shirt"
+            },
+            {
+                "id": 2,
+                "title": "pant",
+                "path": "/pant",
+                "page_name": "pant"
+            },
+            {
+                "id": 3,
+                "title": "shoes",
+                "path": "/shoes",
+                "page_name": "shoes"
+            }
+        ]
+    },
+    {   
+        "id": 3,
+        "icon": "./images/cate1.png",
+        "title": "Kid1",
+        "children": [
+            {
+                "id": 1,
+                "title": "Shirt",
+                "path": "/shirt",
+                "page_name": "shirt"
+            },
+            {
+                "id": 2,
+                "title": "pant",
+                "path": "/pant",
+                "page_name": "pant"
+            },
+            {
+                "id": 3,
+                "title": "shoes",
+                "path": "/shoes",
+                "page_name": "shoes"
+            }
+        ]
+    },
+    {   
+        "id": 4,
+        "icon": "./images/cate1.png",
+        "title": "Kid2",
+        "children": [
+            {
+                "id": 1,
+                "title": "Shirt",
+                "path": "/shirt",
+                "page_name": "shirt"
+            },
+            {
+                "id": 2,
+                "title": "pant",
+                "path": "/pant",
+                "page_name": "pant"
+            },
+            {
+                "id": 3,
+                "title": "shoes",
+                "path": "/shoes",
+                "page_name": "shoes"
+            }
+        ]
+    }
+]
