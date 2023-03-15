@@ -5,6 +5,7 @@ import { RiPieChartLine } from 'react-icons/ri'
 import { IoBagOutline, IoCartOutline } from 'react-icons/io5'
 import { BiCategory, BiSlideshow } from 'react-icons/bi'
 import { SlSettings } from 'react-icons/sl'
+import { FiUser } from 'react-icons/fi'
 
 const menu = [
     {
@@ -35,7 +36,7 @@ const menu = [
                 page_name: 'show_customer',
             }
         ],
-        icon: <SlSettings />,
+        icon: <FiUser />,
         hasSub: true
     },
     {
