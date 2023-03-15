@@ -10,11 +10,14 @@ const default_color = ['red', 'blue', 'black', 'white', 'yellow', 'green'];
 
 const EditProduct = () => {
 
+    const { id } = useParams();
     const [size, setSize] = useState([]);
     const [color, setColor] = useState([]);
     const [products, setProducts] = useState([]);
     const [maincategory, setMaincategory] = useState([]);
     const [subcategory, setSubcategory] = useState([]);
+    const [currentMain, setCurrentMain] = useState("");
+    const [currentSub, setCurrentSub] = useState([]);
     const [image, setImage] = useState([]);
     const nameRef = useRef();
     const descriptionRef = useRef();
@@ -25,7 +28,6 @@ const EditProduct = () => {
     const imageRef = useRef();
     const mainRef = useRef('');
     const subRef = useRef('');
-    const { id } = useParams();
     const navigate = useNavigate();
 
     function addSize(newSize) {
@@ -61,13 +63,13 @@ const EditProduct = () => {
         setImage(img);
     }
 
-    const previewImage = (e) => {
-        const selectedFiles = e.target.files;
-        const selectedFilesArray = Array.from(selectedFiles);
-        const imageArray = selectedFilesArray.map((file) => {
-            return URL.createObjectURL(file);
-        });
-        setImage(imageArray);
+    const getProductDetails = async () => {
+        const res = await axios.get('http://localhost:8000/api/product/details/' + id);
+        const data = res.data.list;
+        getSubcategory({ id: data[0].main_id });
+        setCurrentMain(data[0].main_name);
+        setCurrentSub(data[0].sub_name);
+        setProducts(data);
     }
 
     const getMainCategory = async () => {
@@ -76,7 +78,6 @@ const EditProduct = () => {
         ).then(res => {
             const data = res.data.list;
             setMaincategory(data);
-            getSubcategory({ id: data[0].id })
         }).catch(err => {
             console.log(err);
         });
@@ -93,6 +94,15 @@ const EditProduct = () => {
         });
     }
 
+    const previewImage = (e) => {
+        const selectedFiles = e.target.files;
+        const selectedFilesArray = Array.from(selectedFiles);
+        const imageArray = selectedFilesArray.map((file) => {
+            return URL.createObjectURL(file);
+        });
+        setImage(imageArray);
+    }
+
     const updateProduct = async () => {
         try {
             const sub_id = subRef.current.value;
@@ -104,8 +114,8 @@ const EditProduct = () => {
             const discount = discountRef.current.value;
             const images = imageRef.current.files;
 
-            if(name != '' && description != '' && price != '' && sale_price !='' && qty != '' && image.length >= 3){
-                if(mainRef.current.value == '' || subRef.current.value == ''){
+            if (name != '' && description != '' && price != '' && sale_price != '' && qty != '' && image.length >= 3) {
+                if (mainRef.current.value == '' || subRef.current.value == '') {
                     alert('no category');
                     return;
                 }
@@ -140,7 +150,7 @@ const EditProduct = () => {
                 const res = await axios.put(url, formdata);
                 console.log(res);
                 //console.log(formdata.name);
-                nameRef.current.value = descriptionRef.current.value = priceRef.current.value = sale_priceRef.current.value = qtyRef.current.value = discountRef.current.value =imageRef.current.value = null;
+                nameRef.current.value = descriptionRef.current.value = priceRef.current.value = sale_priceRef.current.value = qtyRef.current.value = discountRef.current.value = imageRef.current.value = null;
                 setImage([]);
                 toast.success('Product edit successfully', {
                     position: "top-center",
@@ -155,7 +165,7 @@ const EditProduct = () => {
                 });
                 navigate('/admin/show_product?page_name=show_product');
             }
-            else{
+            else {
                 toast.warn('Please check information again!!', {
                     position: "top-center",
                     autoClose: 600,
@@ -173,16 +183,9 @@ const EditProduct = () => {
         }
     }
 
-    const getProductDetails = async () => {
-        const res = await axios.get('http://localhost:8000/api/product/details/' + id);
-        const data = res.data.list;
-        setProducts(data);
-    }
-
     useEffect(() => {
-        getProduct();
         getMainCategory();
-        getSubcategory(7);
+        getProduct();
         getProductDetails();
     }, []);
 
@@ -198,7 +201,7 @@ const EditProduct = () => {
         <div className='lg:py-7 lg:px-10 p-5'>
             <div className="flex justify-between items-end">
                 <h1 className='text-3xl font-bold text-black_500'>Edit product</h1>
-                <button onClick={()=>{updateProduct()}} className='px-4 py-2 rounded-md bg-primary text-white text-sm cursor-pointer'>Publish product</button>
+                <button onClick={() => { updateProduct() }} className='px-4 py-2 rounded-md bg-primary text-white text-sm cursor-pointer'>Publish product</button>
             </div>
             <div className="mt-10 flex flex-col gap-8 md:flex-row">
                 <div className='flex-[4]'>
@@ -263,17 +266,19 @@ const EditProduct = () => {
                         </div>
                         <select ref={mainRef} name="" id="" className={`w-full mt-2 text-[14px] cursor-pointer`} onChange={(e) => (getSubcategory({ id: e.target.value }))}>
                             {
-                                maincategory.map((item, index) => (
-                                    <option key={index} value={item.id}>{item.name}</option>
-                                ))
+                                maincategory.map((item, index) => {
+                                    if(item.name == currentMain) return <option selected key={index} value={item.id}>{item.name}</option>
+                                    return <option key={index} value={item.id}>{item.name}</option>
+                                })
                             }
                         </select>
                         <p className='text-[15px] mt-8 font-semibold'>Sub category</p>
                         <select ref={subRef} name="" id="" className={`w-full mt-2 text-[14px] cursor-pointer`} >
                             {
-                                subcategory.map((item, index) => (
-                                    <option key={index} value={item.id}>{item.name}</option>
-                                ))
+                                subcategory.map((item, index) => {
+                                    if (item.name == currentSub) return <option selected key={index} value={item.id}>{item.name}</option>
+                                    return <option key={index} value={item.id}>{item.name}</option>
+                                })
                             }
                         </select>
                     </div>
