@@ -41,7 +41,7 @@ const Register = () => {
         const confirm = confirmpasswordRef.current.value;
 
         if(name === "" || email === "" || password === "" || confirm === ""){
-            toast.warn('Please check information again !!', {
+            return toast.warn('Please check information again !!', {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -52,10 +52,9 @@ const Register = () => {
                 transition: Slide,
                 theme: "light",
             });
-            return;
         }
         if(!validator.isEmail(email)){
-            toast.warn('Please enter a valid email', {
+            return toast.warn('Please enter a valid email', {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -66,10 +65,9 @@ const Register = () => {
                 transition: Slide,
                 theme: "light",
             });
-            return;
         }
         if(password != confirm){
-            toast.warn("Password don't mutch !!", {
+            return toast.warn("Password don't mutch !!", {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -80,12 +78,24 @@ const Register = () => {
                 transition: Slide,
                 theme: "light",
             });
-            return;
         }
         setFirst(false);
     }
 
     const SendVerify = async (e) => {
+        if(imageRef.current.files.length == 0) {
+            return toast.warn("Please select profile picture", {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                transition: Slide,
+                theme: "light",
+            });
+        }
         const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -101,7 +111,7 @@ const Register = () => {
         formData.append('verify', 0);
         formData.append("image", image);
         formData.append('OTP', OTP);
-
+        
         const res = await axios.post(url, formData);
         if(!res.data.success){
             return toast.warn(res.data.message, {

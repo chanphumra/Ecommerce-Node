@@ -70,13 +70,14 @@ const customerController = {
             }
             // check user
             const [rows, cols] = await db.query('SELECT * FROM customer WHERE email = ?', [data.email]);
-            if (r.length > 0) {
+            if (rows.length > 0) {
                 const path = `./uploads/customer/${req.file.filename}`
                 if (fs.existsSync(path)) fs.unlinkSync(path)
                 return res.json({ success: false, message: data.email + " already exist" })
             }
+
             // insert to table customer
-            if (req.file) data["image"] = `http://${req.headers.host}/uploads/customer/${req.file.filename}`
+            if (req.file) data["image"] = `http://${req.headers.host}/uploads/customer/${req.file.filename}`;
             const sql = "INSERT INTO customer (name, email, password, image, verify) VALUES (?,?,?,?,?)";
             const [rows1, cols1] = await db.query(sql, [data.name, data.email, data.password, data.image, 0]);
             
@@ -87,12 +88,12 @@ const customerController = {
             const sql2 = "INSERT INTO verify_account (cus_id, email, otp) VALUES (?,?,?)";
             const [rows2, cols2] = await db.query(sql2, [rows1.insertId, data.email, req.body.OTP]);
 
-            res.json({
+            return res.json({
                 success: true,
             });
         } catch (error) {
-            res.json({
-                error: true,
+            return res.json({
+                success: false,
                 message: error
             });
         }

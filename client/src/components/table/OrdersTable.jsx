@@ -39,7 +39,7 @@ const OrdersTable = () => {
             cus_id = res.data.user[0].id;
         }
         const res = await axios.get('http://localhost:8000/api/order/order/'+ cus_id);
-        setOrder(res.data.list);
+        setOrder(res.data.list.reverse());
         setPage(Math.ceil(res.data.list.length / ITEM_PER_PAGE));
     }
 
