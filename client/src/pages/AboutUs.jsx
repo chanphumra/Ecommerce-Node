@@ -37,7 +37,7 @@ const AboutUs = () => {
             <div className="flex flex-col md:flex-row gap-5 mt-5 justify-center mb-12">
                 <img src={""} alt="" className='shadow-sm w-full md:w-[250px] h-[400px] md:h-[300px]  p-2 rounded-lg border border-solid border-gray-300 ' />
                 <div className='w-full md:w-[70%] order-first'>
-                    <h1 className='text-2xl font-semibold text-gray-800 mb-1'>Mr. Chan Phumra</h1>
+                    <h1 className='text-2xl font-semibold text-gray-800 mb-1'>Mr. Meng Sereyvathana</h1>
                     <h1 className='text-2xl font-semibold text-gray-600 mb-1'>Web Developer</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nihil repudiandae voluptate repellat perspiciatis sint aliquid dolorum possimus id ipsum fugiat inventore ratione ex, animi facilis soluta doloribus nostrum minus.</p>
                 </div>
