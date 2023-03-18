@@ -156,7 +156,7 @@ const customerController = {
             })
         } catch (error) {
             res.json({
-                error: true,
+                success: true,
                 message: error
             })
         }
@@ -352,6 +352,10 @@ const customerController = {
             return res.json({ success: false, message: error });
         }
     },
+    sendOTP: async (req, res) => {
+        sendEmail(req.body.email, req.body.OTP);
+        res.json({success: true})
+    }
 }
 
 module.exports = customerController;

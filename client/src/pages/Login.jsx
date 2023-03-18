@@ -70,7 +70,7 @@ const Login = () => {
         });
 
         const url = "http://localhost:8000/api/customer/login";
-        
+
         const res = await axios.post(url, { email, password });
         if (!res.data.success) return toast.warn('email or password incorrect', {
             position: "top-center",
@@ -138,14 +138,17 @@ const Login = () => {
                                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Password</label>
                                     <input ref={passwordRef} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-solid border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 " required="" />
                                 </div>
-                                <div className="flex gap-2 items-center">
-                                    <input ref={rememberRef} type="checkbox" id="remember" className="border border-solid border-gray-300 rounded-sm cursor-pointer focus:ring-primary" />
-                                    <label htmlFor="remember" className="cursor-pointer text-sm"> Remember me</label>
+                                <div className="flex justify-between items-center">
+                                    <div className="flex gap-2 items-center">
+                                        <input ref={rememberRef} type="checkbox" id="remember" className="border border-solid border-gray-300 rounded-sm cursor-pointer focus:ring-primary" />
+                                        <label htmlFor="remember" className="cursor-pointer text-sm"> Remember me</label>
+                                    </div>
+                                    <Link to='/resetpassword' className="text-sm font-medium text-primary cursor-pointer hover:underline">Forgot password?</Link>
                                 </div>
                                 <button onClick={Logins} type="submit" className="w-full text-white bg-primary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                                 <p className="text-sm font-normal text-gray-500">
                                     Don’t have an account yet?
-                                    <Link to='/register' href="#" className="font-medium text-primary hover:underline"> Register now</Link>
+                                    <Link to='/register' href="#" className="font-medium text-primary hover:underline ml-1">Register now</Link>
                                 </p>
                             </div>
                         </div>
@@ -156,4 +159,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

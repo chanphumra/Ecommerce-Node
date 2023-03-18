@@ -36,6 +36,9 @@ import OrderDetails from "./pages/OrderDetail";
 import UserProfile from './pages/SiteProfile';
 import Chat from './admin/chat/Chat'
 import Customer from "./admin/pages/Customer";
+import ResetPassword from "./pages/ResetPassword";
+import NewPassword from "./pages/NewPassword";
+import VerifyChangePasswordOTP from "./pages/VerifyChangePasswordOTP";
 
 function App() {
   return (
@@ -84,6 +87,9 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/verifyemail" element={<VerifyEmailOTP />}/>
+        <Route path="/resetpassword" element={<ResetPassword />}/>
+        <Route path="/newpassword" element={<NewPassword />}/>
+        <Route path="/verifychangepassword" element={<VerifyChangePasswordOTP />}/>
       </Routes>
       <ToastContainer/>
     </>

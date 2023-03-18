@@ -25,6 +25,7 @@ const upload = multer({
 router.post("/register", upload ,customerController.register);
 router.post("/login", customerController.login);
 router.post("/resend", customerController.resendVerify);
+router.post("/sendotp", customerController.sendOTP);
 router.get("/check", authMiddleware, customerController.check);
 router.get("/", customerController.getAll);
 router.get("/:id", customerController.getByID);
