@@ -18,7 +18,7 @@ const OrdersTable = () => {
     const [order, setOrder] = useState([]);
     const getOrder = async () => {
         const res = await axios.get('http://localhost:8000/api/order');
-        setOrder(res.data.list);
+        setOrder(res.data.list.reverse());
         setPage(Math.ceil(res.data.list.length / ITEM_PER_PAGE));
     }
 
