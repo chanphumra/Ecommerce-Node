@@ -122,10 +122,7 @@ const CategoryTable = () => {
                                             <td className='text-ph font-semibold text-gray-700 py-2 px-3'>
                                                 <p className='w-[300px] text-ph font-semibold truncate text-primary py-2 px-3'>{item.description}</p>
                                             </td>
-                                            {/* <td className='text-ph font-semibold text-gray-700 py-2 px-3'>
-                                                <p>{maincategory.counts[index][0].count}</p>
-                                            </td> */}
-                                            <td className='text-ph font-semibold text-gray-700 py-2 px-3'>{item.description}</td>
+                                            <td className='text-ph font-semibold text-gray-700 py-2 px-3'>{item.created_at}</td>
                                             <td className='text-lg w-4 text-gray-700 py-2 px-3 pr-5'>
                                                 <FiMoreHorizontal className='font-semibold' />
                                             </td>
