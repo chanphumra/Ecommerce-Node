@@ -64,7 +64,7 @@ const EditSubCategory = () => {
                 const data = res.data.list;
                 console.log(data);
             }).catch(err => {
-                alert(err);
+                console.log(err);
             });
             toast.success('Category edit successfully', {
                 position: "top-center",

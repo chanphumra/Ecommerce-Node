@@ -54,7 +54,19 @@ const AddCategory = () => {
                 description: description,
                 image: image
             };
-            if (!mainCheck && main_id === '') { alert('no main id'); return; }
+            if (!mainCheck && main_id === '') { 
+                return toast.warning('No main category', {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Slide,
+                    theme: "light",
+                }); 
+            }
 
             await axios.post(url, data, {
                 headers: {

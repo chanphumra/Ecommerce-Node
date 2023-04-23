@@ -95,8 +95,17 @@ const AddProduct = () => {
 
             if (name != '' && description != '' && price != '' && sale_price != '' && qty != '' && image.length >= 3) {
                 if (mainRef.current.value == '' || subRef.current.value == '') {
-                    alert('no category');
-                    return;
+                    return toast.warning('No category', {
+                        position: "top-center",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        transition: Slide,
+                        theme: "light",
+                    });
                 }
                 let sizes = '';
                 let colors = '';
