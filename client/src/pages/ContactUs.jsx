@@ -2,74 +2,37 @@ import React from 'react'
 
 const ContactUs = () => {
     return (
-        <div>
-            <section className="text-gray-700 body-font relative">
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-col text-center w-full mb-12">
-                        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                            Contact Us
-                        </h1>
-                        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                            gentrify.
-                        </p>
-                    </div>
-                    <div className="lg:w-1/2 md:w-2/3 mx-auto">
-                        <div className="flex flex-wrap -m-2">
-                            <div className="p-2 w-1/2">
-                                <div className="relative">
-                                    <label for="name" className="leading-7 text-sm text-gray-600">
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        className="input w-full bg-white rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                    />
-                                </div>
-                            </div>
-                            <div className="p-2 w-1/2">
-                                <div className="relative">
-                                    <label
-                                        for="email"
-                                        className="leading-7 text-sm text-gray-600"
-                                    >
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="input w-full bg-white rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                    />
-                                </div>
-                            </div>
-                            <div className="p-2 w-full">
-                                <div className="relative">
-                                    <label
-                                        for="message"
-                                        className="leading-7 text-sm text-gray-600"
-                                    >
-                                        Message
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        className="input w-full bg-gray-white rounded border border-gray-300 focus:border-primary h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                    ></textarea>
-                                </div>
-                            </div>
-                            <div className="p-2 w-full ">
-                                <button className="w-full text-white bg-primary border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg text-center">
-                                    Send
-                                </button>
-                            </div>
+        <div class="mycontainer h-[85vh]">
+        <div class="h-full m-auto flex flex-col items-center justify-center">
+            <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-xl xl:p-0 ">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                        Contact for get more information
+                    </h1>
+                    <div class="space-y-4 md:space-y-6">
+                        <div>
+                            <label htmlFor="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                            <input type="text" name="name" id="name"
+                                class="border border-solid border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 "
+                                placeholder="yourname" required />
                         </div>
+                        <div>
+                            <label htmlFor="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                            <input type="email" name="email" id="email"
+                                class="border border-solid border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 "
+                                placeholder="example@gmail.com" required />
+                        </div>
+                        <div>
+                            <label htmlFor="message" class="block mb-2 text-sm font-medium text-gray-900">Message</label>
+                            <textarea name="" id="message" placeholder='Write message here...'
+                                class='text-sm h-[200px] input w-full resize-none'></textarea>
+                        </div>
+                        <button class="w-full text-white bg-primary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send Message</button>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
+    </div>
     );
 }
 

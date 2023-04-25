@@ -22,8 +22,8 @@ const Public = () => {
             <Header count={count} setCount={setCount}/>
             {page_name === "home" ? <Home setCount={setCount} carts={carts} setCarts={setCarts}/> : <Outlet context={[count, setCount, carts, setCarts]}/>}
             <Footer />
-            <div onClick={() => setOpenChat(open => !open)} className='fixed z-50 bottom-[20px] right-[30px] w-[70px] h-[70px] leading-[78px] cursor-pointer bg-primary rounded-full shadow-lg border border-solid border-gray-300 text-center'>
-                <i className="fa-regular fa-message text-white text-3xl"></i>
+            <div onClick={() => setOpenChat(open => !open)} className='fixed z-50 bottom-[20px] right-[30px] w-[60px] h-[60px] leading-[65px] cursor-pointer bg-primary rounded-full shadow-lg border border-solid border-gray-300 text-center'>
+                <i className="fa-regular fa-message text-white text-2xl"></i>
             </div>
             {openChat ? <Chat setOpenChat={setOpenChat}/>: null}
         </>
